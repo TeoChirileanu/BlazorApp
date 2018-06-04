@@ -15,6 +15,7 @@ namespace BlazorApp.Tests {
 
         public ControllerTests() {
             var numberServiceMock = new Mock<INumberService>();
+            var loggerMock = new Mock<ILogger>();
 
             numberServiceMock.Setup(service =>
                     service.Validate(It.Is<string>(s => int.Parse(s) == CorrectNumber)))
@@ -32,7 +33,7 @@ namespace BlazorApp.Tests {
                     service.Validate(It.Is<string>(s => !new Regex(Resources.ValidNumberRegex).IsMatch(s))))
                 .Returns(() => null);
 
-            _gameController = new GameController(numberServiceMock.Object);
+            _gameController = new GameController(numberServiceMock.Object, loggerMock.Object);
         }
 
 
@@ -53,10 +54,9 @@ namespace BlazorApp.Tests {
         }
 
         private static string GetRandomString() {
-            //TODO: rename path to randomString
-            var path = Path.GetRandomFileName();
-            path = path.Replace(".", "");
-            return path;
+            var randomString = Path.GetRandomFileName();
+            randomString = randomString.Replace(".", "");
+            return randomString;
         }
 
         [TestMethod]

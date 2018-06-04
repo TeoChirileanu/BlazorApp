@@ -6,11 +6,13 @@ using Microsoft.AspNetCore.Mvc;
 namespace BlazorApp.Server.Controllers {
     [Route("api/[controller]")]
     public class GameController : Controller {
-        public GameController(INumberService numberService) {
+        public GameController(INumberService numberService, ILogger logger) {
             NumberService = numberService;
+            Logger = logger;
         }
 
         private INumberService NumberService { get; }
+        private ILogger Logger { get; }
 
         private static int CorrectNumber => int.Parse(Resources.CorrectNumber);
 
@@ -25,16 +27,30 @@ namespace BlazorApp.Server.Controllers {
                     Resources.UpperBound);
                 return BadRequest(errorMessage);
             }
-
+            Logger.Log($"Checking number {guessedNumber}...");
             if (guessedNumber < CorrectNumber) {
+                Logger.Log("Unfortunately, this number is too low.");
                 return StatusCode(303, Resources.TooLowMessage);
             }
 
             if (guessedNumber > CorrectNumber) {
+                Logger.Log("Unfortunately, this number is too high.");
                 return StatusCode(303, Resources.TooHighMessage);
             }
 
+            Logger.Log("Awesome, this is the correct number!");
             return Ok(Resources.CorrectGuessMessage);
+        }
+
+        [HttpGet("log")]
+        public ActionResult<string> Logs() {
+            var log = Logger.GetLog();
+            if (string.IsNullOrWhiteSpace(log)) {
+                return BadRequest("Error while getting the logs!");
+            }
+
+            Logger.Reset();
+            return Ok(log);
         }
     }
 }
