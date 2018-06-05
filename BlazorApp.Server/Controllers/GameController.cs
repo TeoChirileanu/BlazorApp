@@ -6,13 +6,13 @@ using Microsoft.AspNetCore.Mvc;
 namespace BlazorApp.Server.Controllers {
     [Route("api/[controller]")]
     public class GameController : Controller {
-        public GameController(INumberService numberService, ILogger logger) {
+        public GameController(INumberService numberService, IResetableLogger logger) {
             NumberService = numberService;
             Logger = logger;
         }
 
         private INumberService NumberService { get; }
-        private ILogger Logger { get; }
+        private IResetableLogger Logger { get; }
 
         private static int CorrectNumber => int.Parse(Resources.CorrectNumber);
 

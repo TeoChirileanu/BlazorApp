@@ -3,7 +3,7 @@ using System.Text;
 using BlazorApp.Server.Interfaces;
 
 namespace BlazorApp.Server.Services {
-    public class MemoryLogger : ILogger {
+    public class MemoryLogger : IResetableLogger {
         private StringBuilder Messages { get; set; } = new StringBuilder();
 
         public void Log(string message) {

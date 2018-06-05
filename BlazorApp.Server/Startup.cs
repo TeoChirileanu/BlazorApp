@@ -24,7 +24,7 @@ namespace BlazorApp.Server {
             });
 
             services.AddTransient<INumberService, NumberService>();
-            services.AddSingleton<ILogger, MemoryLogger>();
+            services.AddSingleton<IResetableLogger, MemoryLogger>();
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env) {

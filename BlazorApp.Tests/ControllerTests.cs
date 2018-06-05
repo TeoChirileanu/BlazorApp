@@ -15,7 +15,7 @@ namespace BlazorApp.Tests {
 
         public ControllerTests() {
             var numberServiceMock = new Mock<INumberService>();
-            var loggerMock = new Mock<ILogger>();
+            var loggerMock = new Mock<IResetableLogger>();
 
             numberServiceMock.Setup(service =>
                     service.Validate(It.Is<string>(s => int.Parse(s) == CorrectNumber)))
