@@ -8,12 +8,12 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 
-namespace BlazorApp.Tests {
+namespace BlazorApp.Tests.IntegrationTests {
     [TestClass]
-    public class ControllerTests {
+    public class GameControllerTests {
         private readonly GameController _gameController;
 
-        public ControllerTests() {
+        public GameControllerTests() {
             var numberServiceMock = new Mock<INumberService>();
             var loggerMock = new Mock<IResetableLogger>();
 

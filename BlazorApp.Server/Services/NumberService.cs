@@ -7,6 +7,7 @@ namespace BlazorApp.Server.Services {
         private static Regex Regex => new Regex(Resources.ValidNumberRegex);
 
         public int? Validate(string numberToCheck) {
+            if (string.IsNullOrWhiteSpace(numberToCheck)) return null;
             if (!Regex.IsMatch(numberToCheck)) return null;
             return int.Parse(numberToCheck);
         }

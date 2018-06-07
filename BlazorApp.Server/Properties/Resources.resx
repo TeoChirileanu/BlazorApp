@@ -123,8 +123,14 @@
   <data name="CorrectNumber" xml:space="preserve">
     <value>50</value>
   </data>
+  <data name="DateTimeFormat" xml:space="preserve">
+    <value>HH:mm:ss</value>
+  </data>
   <data name="InvalidNumberMessage" xml:space="preserve">
     <value>Please enter a valid number between {0} and {1} exclusive.</value>
+  </data>
+  <data name="InvalidStringMessage" xml:space="preserve">
+    <value>Message should not be null, empty or whitespace</value>
   </data>
   <data name="LowerBound" xml:space="preserve">
     <value>0</value>

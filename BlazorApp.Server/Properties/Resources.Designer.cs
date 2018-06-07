@@ -22,7 +22,7 @@ namespace BlazorApp.Server.Properties {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public  class Resources {
+    public class Resources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -79,11 +79,29 @@ namespace BlazorApp.Server.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to HH:mm:ss.
+        /// </summary>
+        internal static string DateTimeFormat {
+            get {
+                return ResourceManager.GetString("DateTimeFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Please enter a valid number between {0} and {1} exclusive..
         /// </summary>
         public static string InvalidNumberMessage {
             get {
                 return ResourceManager.GetString("InvalidNumberMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Message should not be null, empty or whitespace.
+        /// </summary>
+        internal static string InvalidStringMessage {
+            get {
+                return ResourceManager.GetString("InvalidStringMessage", resourceCulture);
             }
         }
         
