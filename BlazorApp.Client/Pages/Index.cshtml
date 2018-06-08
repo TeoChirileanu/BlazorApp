@@ -9,7 +9,7 @@
 </div>
 
 <div>
-    @if (!gameOver) { <button onclick="@(async () => await CheckNumber())">Check</button> }
+    <button onclick="@(async () => await CheckNumber())" hidden="@gameOver">Check</button>
     @if (!string.IsNullOrWhiteSpace(Message)) { @Message }
 </div>
 

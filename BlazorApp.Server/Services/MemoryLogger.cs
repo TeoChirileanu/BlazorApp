@@ -14,7 +14,11 @@ namespace BlazorApp.Server.Services {
             Messages.AppendLine($"{time} {message}");
         }
 
-        public string GetLog() => Messages.ToString();
+        public string GetLog() {
+            var messages = Messages.ToString();
+            Reset();
+            return messages;
+        } 
 
         public void Reset() {
             Messages = new StringBuilder();

@@ -27,6 +27,7 @@ namespace BlazorApp.Server.Controllers {
                     Resources.UpperBound);
                 return BadRequest(errorMessage);
             }
+
             Logger.Log($"Checking number {guessedNumber}...");
             if (guessedNumber < CorrectNumber) {
                 Logger.Log("Unfortunately, this number is too low.");
@@ -43,14 +44,6 @@ namespace BlazorApp.Server.Controllers {
         }
 
         [HttpGet("log")]
-        public ActionResult<string> Logs() {
-            var log = Logger.GetLog();
-            if (string.IsNullOrWhiteSpace(log)) {
-                return BadRequest("Error while getting the logs!");
-            }
-
-            Logger.Reset();
-            return Ok(log);
-        }
+        public ActionResult<string> Logs() => Ok(Logger.GetLog());
     }
 }
