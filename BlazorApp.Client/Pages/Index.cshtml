@@ -33,7 +33,7 @@
     bool gameOver { get; set; }
 
     async Task CheckNumber() {
-        var response = await http.GetAsync($"/api/game/checknumber/{Number}").ConfigureAwait(false);
+        var response = await http.GetAsync($"/api/game/{Number}/check").ConfigureAwait(false);
         if (response.IsSuccessStatusCode) gameOver = true;
         Message = await response.Content.ReadAsStringAsync();
         StateHasChanged();

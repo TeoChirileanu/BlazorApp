@@ -16,12 +16,12 @@ namespace BlazorApp.Server.Controllers {
 
         private static int CorrectNumber => int.Parse(Resources.CorrectNumber);
 
-        [HttpGet("[action]/{numberToCheck}")]
+        [HttpGet("{number}/check")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status303SeeOther)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public ActionResult<int> CheckNumber([FromRoute] string numberToCheck) {
-            var guessedNumber = NumberService.Validate(numberToCheck);
+        public ActionResult<int> CheckNumber([FromRoute] string number) {
+            var guessedNumber = NumberService.Validate(number);
             if (guessedNumber is null) {
                 var errorMessage = string.Format(Resources.InvalidNumberMessage, Resources.LowerBound,
                     Resources.UpperBound);
